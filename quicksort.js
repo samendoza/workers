@@ -53,5 +53,5 @@ function quickSort(items, left, right) {
 self.addEventListener('message', function(e) {
     var data = e.data;
     var result = quickSort(e.data, 0, e.data.length - 1);
-  self.postMessage(result.toString());
+  self.postMessage(result.toString() + "acabe");
 }, false);
