@@ -45,13 +45,18 @@ function quickSort(items, left, right) {
     return items;
 }
 
-
-// first call
-
-//alert(result.toString());
-
 self.addEventListener('message', function(e) {
-    var data = e.data;
-    var result = quickSort(e.data, 0, e.data.length - 1);
-  self.postMessage(result.toString() + "acabe");
+    var filtro = e.data[0];
+    var numeros = e.data[1];
+    var result = quickSort(numeros, 0, numeros.length - 1);
+    var resultString = result.map(String);
+    
+    var filtrados = [];
+   // var pattern = new RegExp("*." + filtro + ".*");
+    for(var i=0; i<resultString.length; i++){
+        if(resultString[i].indexOf(filtro) === 0) 
+                filtrados.push(resultString[i]);
+    }
+    
+    self.postMessage(filtrados.toString());
 }, false);
